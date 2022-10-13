@@ -35,7 +35,13 @@ awk -F '\t' '$34!="T"{print}'
 awk -F '\t' '$44!="T"{print}'
 
 # MetaLR (metalr) D: Deleterious
-awk -F '\t' '$46!="T"{print}'
+awk -F '\t' '$46!="T"{print}' >MR01.hg38_multianno.score_filter  
 
->MR01.hg38_multianno.score_filter  Number:39
+#####Using all kinds of score to filter the vcf, the final variant number is 39.#####
+
+
+
+## 用rs編號去NCBI Clinvar看這些變異是否有人報道過
+
+
 
