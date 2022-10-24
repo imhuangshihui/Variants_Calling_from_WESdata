@@ -60,24 +60,34 @@ cat MR01.hg38_multianno.exonicfuntion | awk -F '\t' '{if($21<=0.05)print $21}' |
 
 awk -F '\t' '{if($23>=0.957)print}' | wc -l
 820
+# awk -F '\t' '{if($23>=0.453)print}' | wc -l
+# 1205
 
 awk -F '\t' '{if($25>0.909)print}' | wc -l
 541
+# awk -F '\t' '{if($25>0.909)print}' | wc -l
+# 944
 
 awk -F '\t' '$28!="U"{print}' | awk -F '\t' '$28!="N"{print}'
 372
+# awk -F '\t' '$28!="U"{print}'
+# 842
 
 awk -F '\t' '$32!="L"{print}' | awk -F '\t' '$32!="N"{print}'
 275
+# This condition is not change: 529
 
 awk -F '\t' '$34!="T"{print}'
 70
+# 122
 
 awk -F '\t' '$44!="T"{print}'
 38
+# 54
 
 awk -F '\t' '$46!="T"{print}'
 37
+# 53
 
 #Same results as the (1) method
 
