@@ -39,6 +39,16 @@ awk -F '\t' '$46!="T"{print}' >MR01.hg38_multianno.score_filter
 
 #####Using all kinds of score to filter the vcf, the final variant number is 39.#####
 
+# 提取rsid用於做Clinvar的注釋
+# 首先先轉換爲annovar的格式
+cat MR01.hg38_multianno.score_filter | cut -f20 > MR01.score.filtered.snplist.txt
+# Run the script
+convert2annovar.rsid.sh 
+# 報錯，有可能是Humandb的數據庫不對
+
+
+
+
 #(2) Extract the exonic variants first, then use score to filter the nonsynomos
 cat MR01.hg38_multianno.filtered | awk -F '\t' '{if($9!="synonymous SNV")print}' | awk -F '\t' '{if($9!="unknown")print}' | cut -f9 | sort | uniq -c
   53177 .
@@ -91,8 +101,8 @@ awk -F '\t' '$46!="T"{print}'
 
 #Same results as the (1) method
 
+# Filter the 12477 synonymous SNV and 363 unknown exonic function
+cat MR01.hg38_multianno.filtered | awk -F '\t' '$9!="synonymous SNV"{print}' | awk -F '\t' '$9!="unknown"{print}' > MR01.hg38_multianno.filtered.synonymous
 
-## 用rs編號去NCBI Clinvar看這些變異是否有人報道過
-
-
+# Using the new filteration file to annotate clinvar
 
