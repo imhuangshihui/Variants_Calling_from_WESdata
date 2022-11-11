@@ -1,3 +1,6 @@
+## Ref1: https://gist.github.com/ckandoth/5390e3ae4ecf182fa92f6318cfa9fa97 ###
+## Ref2:https://github.com/Ensembl/ensembl-vep/issues/522 ###
+
 (base) export VEP_PATH=/mnt/hwstor9k_data1/junehuang/biosoft/ensembl-vep
 (base) export VEP_DATA=/mnt/hwstor9k_data1/junehuang/biosoft/.vep
 (base) perl INSTALL.pl --AUTO cf --SPECIES homo_sapiens --ASSEMBLY GRCh38 --DESTDIR $VEP_PATH --CACHEDIR $VEP_DATA
@@ -50,3 +53,25 @@ All done
 Failed to open ./.vep/ExAC_nonTCGA.r0.3.1.sites.vep.vcf.gz: No such file or directory
 Failed to open -: unknown file type
 (base) ./vep --species homo_sapiens --assembly GRCh38 --offline --no_progress --no_stats --sift b --ccds --uniprot --hgvs --symbol --numbers --domains --gene_phenotype --canonical --protein --biotype --uniprot --tsl --pubmed --variant_class --shift_hgvs 1 --check_existing --total_length --allele_number --no_escape --xref_refseq --failed 1 --vcf --minimal --flag_pick_allele --pick_order canonical,tsl,biotype,rank,ccds,length --dir $VEP_DATA --fasta $VEP_DATA/homo_sapiens/$VER\_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa.gz --input_file examples/homo_sapiens_GRCh38.vcf --output_file examples/homo_sapiens_GRCh38.vep.vcf --polyphen b --af --af_1kg --af_esp --regulatory
+
+
+########### Try to install it by using conda ##############
+### Reference: https://gist.github.com/ckandoth/d6de7eff889e8860dd5f3f3dd234c045 ####
+(base) conda activate vep
+(base) conda install -y -c conda-forge -c bioconda -c defaults ensembl-vep==106.0 htslib==1.14 bcftools==1.14 samtools==1.14 ucsc-liftover==377
+Executing transaction: - This package installs only the variant effect predictor (VEP) library
+code. To install data libraries, you can use the 'vep_install' command
+installed along with it. For example, to install the VEP library for human
+GRCh38 to a directory
+
+vep_install -a cf -s homo_sapiens -y GRCh38 -c /output/path/to/GRCh38/vep --CONVERT
+
+(note that vep_install is renamed from INSTALL.pl
+ to avoid having generic script names in the PATH)
+
+The --CONVERT flag is not required but improves lookup speeds during
+runs. See the VEP documentation for more details
+
+http://www.ensembl.org/info/docs/tools/vep/script/vep_cache.html
+                                                                                                                   done
+Retrieving notices: ...working... done
