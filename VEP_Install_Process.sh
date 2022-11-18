@@ -75,3 +75,35 @@ runs. See the VEP documentation for more details
 http://www.ensembl.org/info/docs/tools/vep/script/vep_cache.html
                                                                                                                    done
 Retrieving notices: ...working... done
+
+
+#Using conda to install vep
+(vep) vep_install -a cf -s homo_sapiens -y GRCh38 -c /mnt/hwstor9k_data1/junehuang/biosoft/vep/ --CONVERT
+
+Version check reports a newer release of 'ensembl-vep' is available (installed: 105, available: 108)
+
+You should exit this installer and re-download 'ensembl-vep' if you wish to update
+
+Do you wish to exit so you can get updates (y) or continue (n): n
+ - getting list of available cache files
+ - downloading ftp://ftp.ensembl.org/pub/release-105/variation/indexed_vep_cache/homo_sapiens_vep_105_GRCh38.tar.gz
+ - unpacking homo_sapiens_vep_105_GRCh38.tar.gz
+ - converting cache, this may take some time but will allow VEP to look up variants and frequency data much faster
+ - use CTRL-C to cancel if you do not wish to convert this cache now (you may run convert_cache.pl later)
+Possible precedence issue with control flow operator at /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/envs/vep/lib/site_perl/5.26.2/Bio/DB/IndexedBase.pm line 805.
+2022-11-18 16:50:55 - Processing homo_sapiens
+2022-11-18 16:50:55 - Processing version 105_GRCh38
+2022-11-18 16:50:56 - No unprocessed types remaining, skipping
+2022-11-18 16:50:56 - All done!
+ - downloading Homo_sapiens.GRCh38.dna.toplevel.fa.gz
+ - downloading Homo_sapiens.GRCh38.dna.toplevel.fa.gz.fai
+ - downloading Homo_sapiens.GRCh38.dna.toplevel.fa.gz.gzi
+
+The FASTA file should be automatically detected by the VEP when using --cache or --offline.
+If it is not, use "--fasta /mnt/hwstor9k_data1/junehuang/biosoft/vep//homo_sapiens/105_GRCh38/Homo_sapiens.GRCh38.dna.toplevel.fa.gz"
+
+
+All done
+
+
+/home/junehuang/.vep not find cache file
