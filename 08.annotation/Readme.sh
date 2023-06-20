@@ -36,6 +36,7 @@ final.vqsr.bedfilter.vcf.gz | grep -v '^##' | cut -f1-2,10-68 | sed 's+/+|+g' > 
 ### To get a spreadsheet in which the patient's in the first column and don't care the variants are repetitive:
 sh genotype.extract.for.each.patient.sh
 # Use batch script to run add_patientID.py and you will get each patient's variant calling file whose filename is their subject ID
+## python3 ../add_patientID.py pwh${i}
 sh run_script.sh
 # Add one column to illustrate their diagnosis
 sh add_diagnosis.sh
