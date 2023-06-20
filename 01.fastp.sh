@@ -3,7 +3,8 @@
 #$ -cwd
 #$ -j y
 #$ -S /bin/bash
-#
+# 01.Quality control
+
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 conda activate wgs
 
