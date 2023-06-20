@@ -47,19 +47,42 @@ cat final.txt | awk '{count=0; for(i=21; i<30; i++){if(($i =="D")||($i =="P")||(
 
 
 ### If you just want the uniq variant and show patients' ID in the last column of each variant, you can try the scripts below:
-# Add sample identifier(PWHxxxx) and diagnosis(ApHCM, HCM, etc.) column ######
 # Create the variant position file and use it as feed to raw vcf file to find the variant's genotype
 cat format.cadd10.maf.remove.keep.txt | cut -f2 > variant.pos.txt
-## Create the new documentary to store the genotype for each sample and combine all the sample GT into one file
-# Or use variant.pos.py to filter the useful variant first, so it won't search the whole vcf file
-sh genotype.extract.sh
-cat hcm.snps.VQSR.noheader.vcf | cut -f1-2 > chr.pos.col
-paste chr.pos.col ./GT/genotype.col > hcm1to16.snps.VQSR.onlyGT.vcf
+# Input: variant.pos.txt, raw.pos.gt.vcf; Output: final.pos.gt.vcf (same format with raw.pos.gt.vcf but only include the variants after the filteration)
+python3 variant.pos.py
 
-# 4.Get the sample name without same genotype like '0|0', '1|1' (... '6|6')  【chr	pos	sample_name】
-# Better check it first to see how many kinds of gt we don't need
-python3 sample.name.py  
+mkdir GT
+for i in {3..61}
+do
+        cat final.pos.gt.vcf | cut -f${i} | cut -d ':' -f1 > ./GT/pwh${i}
+done
+cd GT
+mv pwh3 pwh03
+mv pwh4 pwh04
+mv pwh5 pwh05
+mv pwh6 pwh06
+mv pwh7 pwh07
+mv pwh8 pwh08
+mv pwh9 pwh09
+paste $(ls -1 | sort) > genotype.col
+paste chr.pos.col genotype.col > final.pos.onlygt.vcf
+
+# Input: final.pos.onlygt.vcf; Output: sample.name.txt (Below shows the format of output file)
+#chr1    930165  PWHA000101,PWHA000271,
+#chr1    939436  PWHA000290,PWHA000297,
+#chr1    942791  PWHA000024,
+#chr1    943287  PWHA000163,
+#chr1    943379  PWHA000109,PWHA000335,
+#chr1    944004  PWHA000072,PWHA000095,PWHA000327,
+
+python3 sample.name.py
+
+# Input: format.maf.remove.keep.txt and sample.name.txt; Output: format.maf.remove.keep.withID.txt
 python3 add_sampleID.py
+
+# Here use the python script (NOT THE BASH SCRIPT USED ABOVE) 
 python3 add_diagnosis.py
+
 
 
