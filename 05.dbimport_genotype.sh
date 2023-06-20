@@ -3,7 +3,8 @@
 #$ -cwd
 #$ -j y
 #$ -S /bin/bash
-#
+# Build database for each sample, and produce genotype vcf file based on chromosome
+
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 
 conda activate wgs
