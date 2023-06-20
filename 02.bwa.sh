@@ -3,7 +3,9 @@
 #$ -cwd
 #$ -j y
 #$ -S /bin/bash
-#
+# 02.Alignment to get the bam file
+# Example of sample name:HCM0001_DKDN220015863-1A_HCK55DSX5_L2_1.fq.gz, HCM0001_DKDN220015863-1A_HCK55DSX5_L2_2.fq.gz, HCM0001_DKDN220015863-1A_HCK55DSX5_L2_1.filter.fq.gz
+
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 
 conda activate wgs
