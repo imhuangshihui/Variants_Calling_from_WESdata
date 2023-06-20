@@ -3,6 +3,8 @@
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 
 #If you want to include all variants in output, use '-format vcf4old' or use '-format vcf4 -allsample -withfreq' instead.
+#"--includeinfo" will keep the original vcf file to the avinput
+
 annovar=/mnt/hwstor9k_data1/junehuang/biosoft/annovar
 in1=/mnt/hwstor9k_data1/junehuang/wes_hcm/rawdata/03.vqsr
 perl ${annovar}/convert2annovar.pl \
@@ -11,6 +13,7 @@ perl ${annovar}/convert2annovar.pl \
 	${in1}/final.vqsr.bedfilter.vcf.gz > final.avinput
 
 # VCF annotation by annovar
+# The output name from annovar will be "final.hg38_multianno.txt"
 
 date '+--- ANNOVAR Start %y-%m-%d %H:%M:%S' > annovar.log
 perl ${annovar}/table_annovar.pl final.avinput \
