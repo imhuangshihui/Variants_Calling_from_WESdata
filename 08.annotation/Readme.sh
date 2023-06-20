@@ -1,3 +1,4 @@
+'''
 Basic filter:
 Variants from exon and intron-exon junctions were recovered.
 Synonymous SNV, nonframeshift deletion and nonframeshift insertion were removed.
@@ -8,13 +9,12 @@ gnomAD exomes with MAF<0.01 
 gnomAD exomes East Asian population with MAF <0.01 
 GERP++>2 or GERP++<0 
 
-
 Add CADD score (CADD >= 10 or CADD >= 20)
 
 Find if there's any gene in three HCM gene list first, then add patient ID
 
 Use 3/9 or 4/9 algrithom to filter
-
+'''
 
 bash annovar.sh
 
