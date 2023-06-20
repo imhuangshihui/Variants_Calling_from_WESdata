@@ -1,4 +1,5 @@
 #!/bin/bash
+# Only choose the regions that hit the bed file. You can skip this step if you want to keep all the regions.
 
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 
