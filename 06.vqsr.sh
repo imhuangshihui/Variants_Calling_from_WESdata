@@ -1,5 +1,6 @@
 #!/bin/bash
-#
+# Get the Variant Quality Score Recalibration (VQSR) file before using Annovar to annotate it
+
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 
 conda activate wgs
