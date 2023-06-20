@@ -3,7 +3,8 @@
 #$ -cwd
 #$ -j y
 #$ -S /bin/bash
-#
+# Create gvcf file from bam file for each sample 
+
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 
 conda activate wgs
