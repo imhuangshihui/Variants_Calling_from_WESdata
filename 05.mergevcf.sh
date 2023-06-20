@@ -1,4 +1,5 @@
 #!/bin/bash
+# Use picard MergeVcfs to merge all the genotype vcf file of chromosomes before doing Variant Quality Score Recalibration (VQSR)
 
 source /mnt/hwstor9k_data1/junehuang/biosoft/miniconda3/bin/activate
 conda activate wgs
