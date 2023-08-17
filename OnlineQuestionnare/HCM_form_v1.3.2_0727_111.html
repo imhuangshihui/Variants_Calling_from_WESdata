@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    display: block;
+    overflow-x: auto;
+
+    <!--    white-space: nowrap;
+    -->
+}
+
+li {list-style-position: inside;}
+  
+th, td {
+    padding: 15px;
+}
+
+</style>
+<meta charset="utf-8"/>
+</head>
+
+<title>HCM form v1.0</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<link rel="stylesheet" href="w3-theme-indigo.css">
+<script src="aes.js"></script>
+<script src="jquery-3.2.1.js"></script>
+<script src="jquery-ui.js"></script>
+<script src="jquery.csv.js"></script>
+<link rel="stylesheet" href="jquery-ui.css">
+
+<body style='width:90%;display: block; overflow-x: auto;'>
+
+
+
+<div class="w3-container w3-theme w3-card w3-center">
+<h2><b>PARTICIPANT QUESTIONNAIRE FOR HCM</b></h2>
+</div>
+
+<br/>
+
+<ol>
+
+<button onclick="myFunction('Demo0')" class="w3-btn w3-block w3-round-large w3-indigo w3-left-align "><li>Info</li></button>
+<div id="Demo0" class="w3-container w3-hide">
+
+
+<ol type="i">
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>Study_ID: <input class="w3-input w3-border" id="Study_ID" type="text" placeholder="e.g. PWHXXXXXX" size="20"></li>
+    </div>
+</div>
+
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>Engish Name: <input class="w3-input w3-border" id="Name" type="text" size="50"></li>
+    </div>
+</div>
+
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>Date of recruitment <span style="color: #FF0000">(YYYY-MM-DD)</span>: <input class="w3-input w3-border form-control" id="Date_examined" name="Date_examined" type="text" size="20"></li>
+    </div>
+</div>
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>Phone Number: <input class="w3-input w3-border" id="Tel_num" type="text" size="20"></li>
+    </div>
+</div>
+
+
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>DOB <span style="color: #FF0000">(YYYY-MM-DD)</span>: <input class="w3-input w3-border form-control" id="DOB" name="DOB" type="text" placeholder="" size="10"></li>
+    </div>
+  </div>
+
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"></div>
+      <div class="w3-rest">
+        <li>HKID: <input class="w3-input w3-border" id="HKID" name="HKID" type="password" size="20"></li>
+      </div>
+  </div>
+
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"></div>
+      <div class="w3-rest">
+        <li>HKID (repeat): <input class="w3-input w3-border" id="HKID_2" name="HKID_2" type="password" size="20"></li>
+      </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+    <li>Sex: <table ><td>M <input type='radio' id='Sex' name='Sex' value='1'></td> <td>F <input type='radio' id='Sex' name='Sex' value='0'></td> </table></li>
+    </div>
+  </div>
+  
+  
+  	<div class="w3-row w3-section">
+  <div class="w3-col"></div>
+    <div class="w3-rest">
+			<li> Encrypted text:<br /> 
+			<table >
+			<tr><td width="90%">
+			(Please email the below text to <b>lhfcrpartreg@gmail.com</b>,<br /> Email subject: "<b>NEW participant registration</b>")<br />
+			<textarea id="encryted_text_full" rows="8" cols="100" readonly></textarea>
+			</tr></td>
+			</table>
+      </li>
+   </div>
+	</div>
+
+	<div class="w3-row w3-section">
+  <div class="w3-col"></div>
+    <div class="w3-rest">
+			<li> Dencryption:
+			
+			<table>
+			<tr>
+			<td width="45%">
+				Encrypted text:<br /> 
+				<textarea id="encryted_text_part" rows="8" cols="50"></textarea>
+      </td>
+      <td width="45%">
+				Decryption: <br />
+				<textarea id="dencryted_text" rows="8" cols="40"></textarea>
+			</td>
+      </tr>
+      
+      </table>
+      </li>
+    </div>
+	</div>
+  
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>Relation of the subject with the Proband (if applicable): <input class="w3-input w3-border" id="Rel_proband" type="text" size="20"></li>
+    </div>
+</div>
+
+
+<div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+      <li>Name of the Proband (if applicable): <input class="w3-input w3-border" id="Name_proband" type="text" size="20"></li>
+    </div>
+</div>
+
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+    <li>Race (Select one or more)
+    <table id='race_type'>
+      <font color='blue'>
+      <tr>
+      <td><input type='checkbox' class='race' name='race_HK3' id='race_array' value='1' > Hong Kong (in three generations)  </td>
+      <td><input type='checkbox' class='race' name='race_HK2' id='race_array' value='2'> Hong Kong (in two generations) </td>
+      <td><input type='checkbox' class='race' name='race_Mainland' id='race_array' value='3'> Mainland <br />
+	  if so, Province: <input class="w3-input w3-border" id="province" type="text" size="20">
+	  </td>
+      </tr>
+      <tr>
+      <td><input type='checkbox' class='race' name='race_Han_population' id='race_array' value='4'> HAN population </td>
+      <td><input type='checkbox' class='race' name='race_Chinese_minorities' id='race_array' value='5'> Other Chinese minorities. <br />
+	  if so, <input class="w3-input w3-border" id="minority" type="text" size="20"></td>
+      </tr>
+      <tr>
+      <td><input type='checkbox' class='race' name='race_American_Indian_Alaskan' id='race_array' value='6'> American Indian/Alaskan </td>
+      <td><input type='checkbox' class='race' name='race_Asian' id='race_array' value='7'> Asian </td>
+      <td><input type='checkbox' class='race' name='race_South_Asian' id='race_array' value='8'> South Asian </td>
+      <td><input type='checkbox' class='race' name='race_Arab_Middle_Eastern' id='race_array' value='9'> Arab/Middle Eastern </td>
+      </tr>
+	  <tr>
+      <td><input type='checkbox' class='race' name='race_White' id='race_array' value='10'> White </td>
+      <td><input type='checkbox' class='race' name='race_European' id='race_array' value='11'> European </td>
+      <td><input type='checkbox' class='race' name='race_Mixed' id='race_array' value='12'> Mixed </td>
+      <td><input type='checkbox' class='race' name='race_Unknow' id='race_array' value='13'> Unknow </td>
+      </tr>
+      </font>
+    </table></li>
+    </div>
+  </div>
+
+
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+    <li>Confirmed diagnosis of cardiovascular disease:
+    <table >
+      <td>Yes <input type='radio' id='cardi_disease' name='cardi_disease' value='1'></td> 
+      <td>No <input type='radio' id='cardi_disease' name='cardi_disease' value='0' checked="checked"></td> 
+	  <tr>
+      <td>If yes, where was the diagnosis made? <input type='text'  id='cardi_where' name='type' > <br />
+	  <br />
+	  If yes, when was the diagnosis made? <input type='text'  id='cardi_when' name='type' ></td>
+	  </tr>
+    </table></li>
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+    <li>Any other disease(s):
+    <table >
+      <td>Yes <input type='radio' id='other_disease' name='other_disease' value='1'></td> 
+      <td>No <input type='radio' id='other_disease' name='other_disease' value='0' checked="checked"></td> 
+	  <tr>
+      <td>If yes, where was the diagnosis made? <input type='text'  id='otherdi_where' name='type' > <br /> 
+	  <br />
+	  If yes, when was the diagnosis made? <input type='text'  id='otherdi_when' name='type' ></td>
+	  </tr>
+    </table></li>
+    </div>
+  </div>
+
+
+</ol>
+
+</div>
+
+<br/>
+
+<button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-round-large w3-indigo w3-left-align"><li>Fertility History (if applicable):  </li></button>
+<div id="Demo1" class="w3-container w3-hide">
+<!--------------------->
+<ol type="i">
+  
+  <div class="w3-row w3-section">
+    <div class="w3-rest">
+      <li>Children: 
+      <table> 
+           <td> Yes <input type='radio' id='children' name='children' value='1'> <br />
+		   If yes, number <input type='text'  id='children_num' name='children_num' >
+		   </td>
+		   <tr>
+           <td> No <input type='radio' id='children' name='children' value='0'>
+			<td>If no, tried conceiving: <br />
+			<input type='radio' class='conceive' name='conceive' id='conceive' value='1'> Yes 
+			<input type='radio' class='conceive' name='conceive' id='conceive' value='0'> No 
+			<input type='radio' class='conceive' name='conceive' id='conceive' value='2'> Don't know </td>
+			<br />
+		   </tr>
+		   <tr>
+           <td> Don't know <input type='radio' id='children' name='children' value='2' checked="checked"> </td>
+		   </tr>
+      </table></li>
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-rest">
+      <li>Spontaneous abortions: 
+      <table> 
+           <td> Yes <input type='radio' id='abortions' name='abortions' value='1'> </td>
+           <td> No <input type='radio' id='abortions' name='abortions' value='0'> </td>
+           <td> Don't know <input type='radio' id='abortions' name='abortions' value='2' checked="checked"> </td>
+		   <tr>
+		   <td>If yes, number <input type='text'  id='abortions_num' name='abortions_num' > <br />
+		    <br />
+			Gestational age in weeks <input type='text'  id='gestational_age' name='gestational_age' > <br />
+			<br />
+			Reason if known <input type='text'  id='abortions_reason' name='abortions_reason' ></td>
+		   </tr>
+      </table></li>
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-rest">
+      <li>Fertility assistance: 
+      <table id='fs_method_type'> 
+           <td> Yes <input type='radio' id='fertility_assistance' name='fertility_assistance' value='1'>
+			<td>If yes, check all that apply: <br />
+			<input type='checkbox' class='fs_method' name='fs_IVF' id='fs_method_array' value='1'> IVF 
+			<input type='checkbox' class='fs_method' name='fs_IVF (with ICSI)' id='fs_method_array' value='2'> IVF (with ICSI)
+			<input type='checkbox' class='fs_method' name='IUI' id='fs_method_array' value='3'> IUI 
+			</td>
+			<br />
+		   <tr>
+           <td> No <input type='radio' id='fertility_assistance' name='fertility_assistance' value='0'> </td>	
+	       </tr>
+		   <tr>
+           <td> Don't know <input type='radio' id='fertility_assistance' name='fertility_assistance' value='2' checked="checked"> </td>
+		   </tr>
+      </table></li>
+    </div>
+  </div>
+  
+</ol>
+<!--------------------->
+</div>
+
+<br/>
+
+<button onclick="myFunction('Demo2')" class="w3-btn w3-block w3-round-large w3-indigo w3-left-align"><li>Family Histroy</li></button>
+<div id="Demo2" class="w3-container w3-hide">
+<!--------------------->
+<ol type="i">
+
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+    <li>Any other family history of genetic disorders:
+    <table >
+		<td> Yes <input type='radio' id='FH_genetic_disorders' name='FH_genetic_disorders' value='1'> <br />
+		<td width="90%">
+			If yes, who was diagnosed and what genetic disorder? <b>e.g. Father(HCM);Mother(UFO)</b> <br />
+			<textarea id="FH_genetic_disorders_info" rows="8" cols="100"></textarea>
+		</td>
+		<tr>
+		<td> No <input type='radio' id='FH_genetic_disorders' name='FH_genetic_disorders' value='0'> </td>
+		<td> Don't know <input type='radio' id='FH_genetic_disorders' name='FH_genetic_disorders' value='2' checked="checked"> </td> 
+		</tr>
+    </table></li>
+    </div>
+  </div>
+
+  <div class="w3-row w3-section">
+  <div class="w3-col" style="width:50px"></div>
+    <div class="w3-rest">
+    <li>Any other family history of Congenital Heart Disease:
+    <table >
+		<td> Yes <input type='radio' id='FH_CHD' name='FH_CHD' value='1'> <br />
+		<td width="90%">
+			If yes, please indicate diagnosis for each affected child/children or relative(s) <b>e.g. Father(HCM);Mother(UFO)</b><br />
+			<textarea id="FH_CHD_info" rows="8" cols="100"></textarea>
+		</td>
+		<tr>
+		<td> No <input type='radio' id='FH_CHD' name='FH_CHD' value='0'> </td>
+		<td> Don't know <input type='radio' id='FH_CHD' name='FH_CHD' value='2' checked="checked"> </td> 
+		</tr>
+    </table></li>
+    </div>
+  </div>
+
+  
+  
+</ol>
+<!--------------------->
+</div>
+
+<!--------------------->
+</div>
+
+<br/>
+
+
+<button onclick="submit" id='btn1' class="w3-btn w3-block w3-round-large w3-pink w3-left-align">submit</button>
+
+</div>
+</ol>
+
+
+
+<script>
+var hcm = 'HCM-';
+var MH_array = [];
+var age;
+var race_array = [];
+
+window.onload = function () {
+  document.addEventListener('input', (event) => {
+    if (event.target.tagName.toUpperCase() === 'INPUT') {
+      event.target.value = event.target.value.replace(',', ';');
+    }
+  })
+};
+
+race_array_calc = function()
+{
+
+    
+    var checkboxes = document.querySelectorAll('.race:checked')
+    race_array = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      race_array.push(checkboxes[i].value);
+    }  
+    //alert(race_array)
+}
+
+fs_method_array_calc = function()
+{
+
+    
+    var checkboxes = document.querySelectorAll('.fs_method:checked')
+    fs_method_array = [];
+    for (var i = 0; i < checkboxes.length; i++) {
+      fs_method_array.push(checkboxes[i].value);
+    }  
+    //alert(fs_method_array);
+}
+
+CHADS_scores_calc = function(){
+    //var age = $("#Date_examined").val()-$("#DOB").val();
+    var doob = new Date($("#DOB").val());
+    var date_ex = new Date($("#Date_examined").val());
+    age = (date_ex.getFullYear()- doob.getFullYear());
+    //alert(age);
+}
+
+$(document).ready(function(){
+
+	$("#Study_ID").on("keydown, key press, keyup",function()
+	{
+		hcm = 'HCM-';
+		var sty_id = $("#Study_ID").val();
+		sty_id = sty_id.replace("HCM-","");
+		document.title = hcm.concat(sty_id);
+	});
+	
+	$("#Temp_ID").on("keydown, key press, keyup",function()
+	{
+		hcm = 'HCM-';
+		var sty_id = $("#Study_ID").val();
+		sty_id = sty_id.replace("HCM-","");
+		document.title = hcm.concat(sty_id,'-',$("#Temp_ID").val());
+    document.getElementsByName('Os_ID')[0].value  = document.getElementsByName('Temp_ID')[0].value; 
+	});
+	
+	
+	$("#DOB").on("keydown, key press, keyup",function(){
+    CHADS_scores_calc();
+    });
+	
+  $("#BH_m").on("keydown, key press, keyup",function()
+    {
+      BW_kg = $("#BW_kg").val();
+      BH_m  = $("#BH_m").val();
+      if (BH_m != '')
+      {
+        BMI = BW_kg/(BH_m*BH_m);
+        m=BMI.toFixed(2);
+        $("#BMI").val(m);
+      }
+    });
+
+  $("#BW_kg").on("keydown, key press, keyup",function()
+    {
+      BW_kg = $("#BW_kg").val();
+      BH_m  = $("#BH_m").val();
+      if (BH_m != '')
+      {
+        BMI   = BW_kg/(BH_m*BH_m);
+        m=BMI.toFixed(2);
+        $("#BMI").val(m);
+      }
+      $("#FS_current_weight").val(BW_kg);
+    });
+
+  $("#race_type").change(function()
+  {
+
+    race_array_calc();
+    
+    //alert("s");
+  });
+  
+  $("#fs_method_type").change(function()
+  {
+
+    fs_method_array_calc();
+    
+    //alert("s");
+  });
+
+
+
+  var SALT = "Cardi0101";
+
+	$("#Name, #DOB, #Tel_num, #Address, #HKID, #HKID_2, #Sex").on("keydown, key press, keyup, change",function()
+  {
+    var encry_eng = CryptoJS.AES.encrypt($("#Name").val(), SALT);
+    var encry_dob = CryptoJS.AES.encrypt($("#DOB").val(), SALT);
+    var encry_tel = CryptoJS.AES.encrypt($("#Tel_num").val(), SALT);
+    var encry_add = CryptoJS.AES.encrypt($("#Address").val(), SALT);
+    var encry_hkid = CryptoJS.AES.encrypt($("#HKID").val(), SALT);
+    var encry_project = CryptoJS.AES.encrypt("HCM", SALT);
+    var Sex = $("input[name='Sex']:checked").val();
+    
+    if ($("#HKID").val().length==0)
+      document.getElementById("encryted_text_full").innerHTML = "HKID not entered.";
+    else if ($("#HKID").val()==$("#HKID_2").val())
+      document.getElementById("encryted_text_full").innerHTML = encry_eng + "\n" + encry_dob+"\n"+encry_tel+"\n"+encry_add+"\n"+encry_hkid+"\n"+encry_project+"\n"+Sex;
+    else
+      document.getElementById("encryted_text_full").innerHTML = "HKID not match.";
+  });
+   
+	$("#encryted_text_part").on("keydown, key press, keyup",function()
+	{
+		var lines = $("#encryted_text_part").val().split('\n');
+		var msg = [CryptoJS.AES.decrypt(lines[0], SALT).toString(CryptoJS.enc.Utf8)];
+		//console.log(lines[0]);
+		for(var i = 1;i < lines.length-1;i++)
+		{
+			msg.push( [CryptoJS.AES.decrypt(lines[i], SALT).toString(CryptoJS.enc.Utf8)]);
+		}
+		msg.push( [lines[i]]);
+		var decryped_textarea="";
+		for(var i = 0;i < lines.length;i++)
+		{
+			decryped_textarea = decryped_textarea + msg[i]+"\n";
+		}
+		document.getElementById("dencryted_text").innerHTML = decryped_textarea;
+		//$("#demo9").text(decryped_textarea);
+	});
+});
+
+//open close section of the form
+function myFunction(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+
+$("#Date_examined").datepicker({ dateFormat: 'yy-mm-dd' });
+$("#DOB").datepicker({ dateFormat: 'yy-mm-dd' });
+
+
+// submit the form and convert into a csv file
+$("#btn1").click(function(){
+<!--------------------->
+		
+
+  var Study_ID            = $("#Study_ID").val();
+  var Name                = $("#Name").val();
+  var Date_examined       = $("#Date_examined").val();
+  var DOB                 = $("#DOB").val();
+  var Sex                 = $("input[name='Sex']:checked").val();
+  var Rel_proband         = $("#Rel_proband").val();
+  var Name_proband        = $("#Name_proband").val();
+  
+  var out_array = [["Date_examined", Date_examined]];
+  out_array.push(["Study_ID", Study_ID]);
+  out_array.push(["Name", Name]);
+  out_array.push(["DOB", DOB]);
+  out_array.push(["AGE", age]);
+  out_array.push(["Sex", Sex]);
+  out_array.push(["Rel_proband", Rel_proband]);
+  out_array.push(["Name_proband", Name_proband]);
+
+<!--------------------->
+  var cardi_disease             = $("input[name='cardi_disease']:checked").val();
+  var cardi_where               = $("#cardi_where").val();
+  var cardi_when                = $("#cardi_when").val();
+  var other_disease             = $("input[name='other_disease']:checked").val();
+  var otherdi_where             = $("#otherdi_where").val();
+  var otherdi_when              = $("#otherdi_when").val();
+
+  out_array.push(["cardi_disease", cardi_disease]);
+  out_array.push(["cardi_where", cardi_where]);
+  out_array.push(["cardi_when", cardi_when]);
+  out_array.push(["other_disease", other_disease]);
+  out_array.push(["otherdi_where", otherdi_where]);
+  out_array.push(["otherdi_when", otherdi_when]);
+  
+<!---------------------Race_type>
+
+  if (race_array.includes("1")) out_array.push(['race_HK3', 1])                          ; else out_array.push(['race_HK3', 0]);
+  if (race_array.includes("2")) out_array.push(['race_HK2', 1])                          ; else out_array.push(['race_HK2', 0]);
+  if (race_array.includes("3")) out_array.push(['race_Mainland', 1])                     ; else out_array.push(['race_Mainland', 0]);
+  var province               = $("#province").val();
+  out_array.push(["province", province]);
+  if (race_array.includes("4")) out_array.push(['race_Han_population', 1])               ; else out_array.push(['race_Han_population', 0]);
+  if (race_array.includes("5")) out_array.push(['race_Chinese_minorities', 1])           ; else out_array.push(['race_Chinese_minorities', 0]);
+  var minority                = $("#minority").val();
+  out_array.push(["minority", minority]);
+  if (race_array.includes("6")) out_array.push(['race_American_Indian_Alaskan', 1])      ; else out_array.push(['race_American_Indian_Alaskan', 0]);
+  if (race_array.includes("7")) out_array.push(['race_Asian', 1])                        ; else out_array.push(['race_Asian', 0]);
+  if (race_array.includes("8")) out_array.push(['race_South_Asian', 1])                  ; else out_array.push(['race_South_Asian', 0]);
+  if (race_array.includes("9")) out_array.push(['race_Arab_Middle_Eastern', 1])          ; else out_array.push(['race_Arab_Middle_Eastern', 0]);
+  if (race_array.includes("10")) out_array.push(['race_White', 1])                       ; else out_array.push(['race_White', 0]);
+  if (race_array.includes("11")) out_array.push(['race_European', 1])                    ; else out_array.push(['race_European', 0]);
+  if (race_array.includes("12")) out_array.push(['race_Mixed', 1])                       ; else out_array.push(['race_Mixed', 0]);
+  if (race_array.includes("13")) out_array.push(['race_Unknow', 1])                      ; else out_array.push(['race_Unknow', 0]);
+
+<!---------------------Fertility History>
+  var children             = $("input[name='children']:checked").val();
+  var children_num         = $("#children_num").val();
+  var conceive             = $("input[name='conceive']:checked").val();
+  var abortions            = $("input[name='abortions']:checked").val();
+  var abortions_num        = $("#abortions_num").val();
+  var gestational_age      = $("#gestational_age").val();
+  var abortions_reason     = $("#abortions_reason").val();
+  var fertility_assistance = $("input[name='fertility_assistance']:checked").val();
+  
+
+  out_array.push(["children", children]);
+  out_array.push(["children_num", children_num]);
+  out_array.push(["conceive", conceive]);
+  out_array.push(["abortions", abortions]);
+  out_array.push(["abortions_num", abortions_num]);
+  out_array.push(["gestational_age", gestational_age]);
+  out_array.push(["abortions_reason", abortions_reason]);
+  out_array.push(["fertility_assistance", fertility_assistance]);
+  //alert(fs_method_array);
+  
+  if (fs_method_array.includes("1")) out_array.push(['IVF', 1])                      ; else out_array.push(['IVF', 0]);
+  if (fs_method_array.includes("2")) out_array.push(['IVF_with_ICSI)', 1])          ; else out_array.push(['IVF_with_ICSI', 0]);
+  if (fs_method_array.includes("3")) out_array.push(['IUI', 1])                      ; else out_array.push(['IUI', 0]);
+  
+<!---------------------Family History>
+
+  var FH_genetic_disorders = $("input[name='FH_genetic_disorders']:checked").val();  
+  var FH_genetic_disorders_info = $("#FH_genetic_disorders_info").val();
+  var FH_CHD = $("input[name='FH_CHD']:checked").val();
+  var FH_CHD_info  = $("#FH_CHD_info").val();
+  out_array.push(['FH_genetic_disorders', FH_genetic_disorders]);
+  out_array.push(["FH_genetic_disorders_info", FH_genetic_disorders_info]);
+  out_array.push(['FH_CHD', FH_CHD]);
+  out_array.push(["FH_CHD_info", FH_CHD_info]);
+
+<!--------------------->  
+ 
+  // output to file
+  
+  var csvContent = "data:text/csv;charset=utf-8,\n";
+	out_array.forEach(function(infoArray, index){
+			dataString = infoArray.join(",");
+			csvContent += dataString+ "\n";
+		});
+  //alert(csvContent);
+  var encodedUri = encodeURI(csvContent);
+  var link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  file_path='HCM_record_'+Study_ID+'.csv';
+  link.setAttribute("download", file_path);
+  document.body.appendChild(link); // Required for FF
+  
+  link.click();
+
+  /*
+  let csvContent = "data:text/csv;charset=utf-8,";
+  out_array.forEach(function(rowArray)
+  {
+   let row = rowArray.join(",");
+   csvContent += row + "\r\n"; // add carriage return
+  }); 
+  //alert(csvContent);
+  
+  var link = document.createElement("a");
+  link.setAttribute("href", encodedUri);
+  file_path=Study_ID+'.csv';
+  link.setAttribute("download", file_path);
+  document.body.appendChild(link); // Required for FF
+  
+  link.click(); // This will download the data file named "my_data.csv".
+  */
+});
+
+</script>
+
+</body>
+</html>
