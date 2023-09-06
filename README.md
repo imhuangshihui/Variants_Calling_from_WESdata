@@ -10,13 +10,15 @@ Hypertrophic Cardiomyopathy (HCM) is a leading cause of sudden cardiac death amo
 - Variant calling by GATK Best Practices and annotated by ANNOVAR
 - Filtered candidate pathogenic HCM genes with various pathogenicity prediction algorithms and databases including CLINVAR
 - Dug into clinical significance, interpretation the causative mutations and genes
+- Variant Filter Criteria
+> Variants from exon and intron-exon junctions were recovered.
+> Synonymous SNV, nonframeshift deletion and nonframeshift insertion were removed.
+> Variant frequency filter :​
+>> NHLBI-ESP 6500 exomes with MAF<0.01 ​
+>> Kaviar database with MAF <0.01 ​
+>> gnomAD exomes with MAF<0.01 ​
+>> gnomAD exomes East Asian population with MAF <0.01 ​
+>> GERP++>2 or GERP++<0 ​
+>> CADD > 10​
 
-  Variants from exon and intron-exon junctions were recovered.
-  Synonymous SNV, nonframeshift deletion and nonframeshift insertion were removed.
-  Variant frequency filter :​
-    NHLBI-ESP 6500 exomes with MAF<0.01 ​
-    Kaviar database with MAF <0.01 ​
-    gnomAD exomes with MAF<0.01 ​
-    gnomAD exomes East Asian population with MAF <0.01 ​
-    GERP++>2 or GERP++<0 ​
-    CADD > 10​
+## 
